@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+	<main role="main">
+	
+		<div class="container mt-5">
+			<div class="alert alert-success" role="alert" th:if="${success}" >
+				New Staff successfully added.
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Staff ID</th>
+						<th>Name</th>
+						<th>Position</th>
+						<th>Salary</th>
+						<th>Roles</th>
+						<th sec:authorize="hasAuthority('ADMIN')">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="staff: ${listStaff}">
+						<td th:text="${staff.id}"></td>
+						<td th:text="${staff.staffId}"></td>
+						<td th:text="${staff.name}"></td>
+						<td th:text="${staff.position}"></td>
+						<td th:text="${staff.salary}"></td>
+						<td th:text="${staff.roles}"></td>
+						<td sec:authorize="hasAuthority('ADMIN')">
+						    <a th:href="@{/staff/edit/{id}(id=${staff.id})}">Edit</a>
+                        </td>
+					</tr>
+				</tbody>
+			</table>
+
+			<a href="#" th:href="@{/staff}" class="btn btn-primary">New Staff</a>
+
+		</div>
+</main>
+</body>
+</html>

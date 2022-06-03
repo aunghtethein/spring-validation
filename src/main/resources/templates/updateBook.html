@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout(~{::main})}">
+
+<body>
+	<main role="main">
+		<div class="container mt-5">
+			<form action="#" th:action="@{/book/update/{id}(id=${book.id})}" th:object="${book}" method="post">
+			
+			
+			<div class="form-group row">
+				<label for="name" class="col-md-2">Name</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{name}" id="name" placeholder="Name"
+	                               th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"/>
+	                 <div class="invalid-feedback" th:errors="*{name}"></div>	
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="publisher" class="col-md-2">Publisher</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{publisher}" id="publisher" placeholder="Publisher"
+	                               th:classappend="${#fields.hasErrors('publisher')} ? 'is-invalid'"/>
+	                 <div class="invalid-feedback" th:errors="*{publisher}"></div>	
+				</div>	
+			</div>
+			
+			<div class="form-group row">
+				<label for="datePublished" class="col-md-2">Date Published</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{datePublished}" id="datePublished" placeholder="Date Published"
+	                               th:classappend="${#fields.hasErrors('datePublished')} ? 'is-invalid'"/>
+	                 <div class="invalid-feedback" th:errors="*{datePublished}"></div>	
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="author" class="col-md-2">Author</label>
+				<div class="col-md-6">
+					<input type="text" th:field="*{author}" id="author" placeholder="Author"
+	                               th:classappend="${#fields.hasErrors('author')} ? 'is-invalid'"/>
+	                 <div class="invalid-feedback" th:errors="*{author}"></div>	
+				</div>		
+			</div>
+			<input type="submit" value="Update" class="btn btn-primary">
+			</form>
+		</div>
+	</main>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layout :: layout (~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<body>
+	
+	<main role="main">
+			<div class="container mt-5">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Book Name</th>
+						<th>Publisher</th>
+						<th>Published Date</th>
+						<th>Author</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="book :${books}">
+						<td th:text="${book.id}"></td>
+						<td th:text="${book.name}"></td>
+						<td th:text="${book.publisher}"></td>
+						<td th:text="${book.datePublished}"></td>
+						<td th:text="${book.author.name}"></td>
+						<td><a th:href="@{/book/edit/{id}(id=${book.id})}">Edit</a></td>
+						<td><a th:href="@{/book/delete/{id}(id=${book.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="#" th:href="@{/book}" class="btn btn-success">New Book</a>
+		</div>
+
+
+</main>
+
+</body>
+</html>
